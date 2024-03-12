@@ -1,5 +1,6 @@
 export default function cleanSet(set, startString) {
-  return [...set].filter((element) => element.startsWith(startString))
-    .map((element) => element.replace(startString, ''))
+  if (startString === '' || typeof(startString) !== 'string') { return ''; };
+  return [...set].filter((str) => str.startsWith(startString) && typeof(str) === 'string')
+    .map((element) => element.slice(startString.length))
     .join('-');
 }
